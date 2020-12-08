@@ -17,8 +17,8 @@ class TableViewController: UITableViewController, WCSessionDelegate {
         
         static func getLessions() -> [lessions] {
             return [
-                lessions(name: "Журавль", time: 15.0, image: "juravl"),
-                lessions(name: "Лотус", time: 13.0, image: "lotus")
+                lessions(name: "Журавль", time: 15.0, image: "image1"),
+                lessions(name: "Лотус", time: 13.0, image: "image1")
             ]
         }
     }
@@ -50,12 +50,6 @@ class TableViewController: UITableViewController, WCSessionDelegate {
         wcSession = WCSession.default
         wcSession.delegate = self
         wcSession.activate()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -69,7 +63,7 @@ class TableViewController: UITableViewController, WCSessionDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "rowTable", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rowTable", for: indexPath) as! TableViewCell
 
         cell.picture.image = UIImage(named: lessions.getLessions()[indexPath.row].image)
         cell.title.text = lessions.getLessions()[indexPath.row].name
